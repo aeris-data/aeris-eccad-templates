@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+<!-- <template> -->
+<div class="aeris-eccad-datasearch">
+    <section data-area="area1">
+        <div></div>
+        <section>
+            <h2>Emissions<span class="badge"></span></h2>
+            <ul>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Données auxiliaires<span class="badge"></span></h2>
+            <ul>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+            </ul>
+        </section>
+    </section>
+    <section data-area="area2">
+        <div>
+            <section>
+                <h2>Slider {{$t('temporal')}}</h2>
+                <!--
+                <h2>Slider {{$t('temporal')}}</h2>
+                -->
+                <hr>
+                <vue-slider ref="slider4" v-bind="dates" v-model="dates.value"
+                                        @callback="temporalChanged"></vue-slider>
+            </section>
+        </div>
+        <div>
+
+        </div>
+        
+        <section>
+            <h2>Inventaires sélectionnés {{$t('selecteddatasets')}}</h2>
+            <ul>
+                <!--
+                <li :class="datasetClass(currentDataset)"
+                    v-for="currentDataset in dataAdded"
+                    v-on:click="datasetSelected(currentDataset)">
+                    {{currentDataset.fullname_category}} - {{currentDataset.title_inventory}} -
+                    {{currentDataset.fullname_resolution}} - {{currentDataset.fullname_geospatial}} <span
+                        v-if="currentDataset.display_name_scenario != 'None'">- {{currentDataset.display_name_scenario}}</span>
+                    - {{currentDataset.display_name_parametre}}
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                -->
+                <li>Catégorie - Global inventory - 1x1 - CH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NoX
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - CH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+            </ul>
+        </section>
+    </section>
+    <section data-area="area3">
+        <div></div>
+        <section>
+            <h2>title1<span class="badge"></span></h2>
+            <ul>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+            </ul>
+        </section>
+        <section>
+            <h2>title2<span class="badge"></span></h2>
+            <ul>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+            </ul>
+        </section>
+    </section>
+    <section data-area="area4">
+        <div></div>
+        <section>
+            <h2>title1<span class="badge"></span></h2>
+            <ul>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+            </ul>
+        </section>
+        <section>
+            <h2>title2<span class="badge"></span></h2>
+            <ul>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+            </ul>
+        </section>
+    </section>
+    <section data-area="area5">
+        <div></div>
+        <section>
+            <h2>title1<span class="badge"></span></h2>
+            <ul>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+            </ul>
+        </section>
+        <section>
+            <h2>title2<span class="badge"></span></h2>
+            <ul>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+                <li>item1</li>
+            </ul>
+        </section>
+    </section>
+    <section data-area="area6">
+            <div></div>
+            <section>
+                <h2>title1<span class="badge"></span></h2>
+                <ul>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                </ul>
+            </section>
+            <section>
+                <h2>title2<span class="badge"></span></h2>
+                <ul>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                </ul>
+            </section>
+        </section>
+
+</div>
+<!-- </template> -->
+<!-- 
+<script></script>
+-->
+
+<style>
+
+/* GRID LAYOUT */
+.aeris-eccad-datasearch {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 20% 20%;
+    grid-template-areas:    "area1 area2"
+                            "area3 area4"
+                            "area5 area6";
+    padding: 20px;
+}
+
+[data-area="area1"] {
+    grid-area: area1;
+}
+[data-area="area2"] {
+    grid-area: area2;
+}
+[data-area="area3"] {
+    grid-area: area3;
+}
+[data-area="area4"] {
+    grid-area: area4;
+}
+[data-area="area5"] {
+    grid-area: area5;
+}
+[data-area="area6"] {
+    grid-area: area6;
+}
+
+/* flexbox layout inside Grid Area */
+[data-area^="area"] {
+    display: flex;
+    padding:20px;
+}
+
+[data-area^="area"]>div {
+    width: 30px;
+    background: #CCC;
+}
+
+[data-area^="area"] > section {
+    flex: 1 1 auto;
+    border:1px solid #CCC;
+}
+
+[data-area^="area"] > section > h2 {
+    padding:0 10px 10px;
+    border-bottom: 1px solid #CCC;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+</style>
+
+
+</body>
+</html>
