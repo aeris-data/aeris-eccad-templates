@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
 
@@ -13,7 +14,6 @@
 <!-- <template> -->
 <div class="aeris-eccad-datasearch">
     <section data-area="area1">
-        <div></div>
         <section>
             <h2>Emissions <span class="badge">5</span></h2>
             <ul>
@@ -38,63 +38,78 @@
     </section>
     <section data-area="area2">
         <div>
-            <section>
+            <section class="aeris-eccad-datasearch-temporalClass">
                 <h2>Temporal</h2>
                 <!--
                 <h2>Slider {{$t('temporal')}}</h2>
-               
+                
                 <vue-slider ref="slider4" v-bind="dates" v-model="dates.value"
                                         @callback="temporalChanged"></vue-slider>
                 -->
                 <div>O-----------------------------O</div>
                 
             </section>
-            <section>
+            <section class="aeris-eccad-datasearch-bboxClass">
                 <h2>Coordonnées géographiques</h2>
-                <div class="aeris-eccad-datasearch-bboxClass">
-                    <label for="north">N<input type="number" id="north"></label>
-                    <label for="west">W<input type="number" id="west"></label>
-                    <label for="south">S<input type="number" id="south"></label>
-                    <label for="east">E<input type="number" id="east"></label>
-                </div>
+                <label for="north"><span>N</span><input type="number" id="north"></label>
+                <label for="west"><span>W</span><input type="number" id="west"></label>
+                <label for="south"><span>S</span><input type="number" id="south"></label>
+                <label for="east"><span>E</span><input type="number" id="east"></label>
             </section>
-            
-        </div>
-        <div>
-            <section>
-                <h2>Inventaires sélectionnés {{$t('selecteddatasets')}}</h2>
-                <ul>
-                    <!--
-                    <li :class="datasetClass(currentDataset)"
-                        v-for="currentDataset in dataAdded"
-                        v-on:click="datasetSelected(currentDataset)">
-                        {{currentDataset.fullname_category}} - {{currentDataset.title_inventory}} -
-                        {{currentDataset.fullname_resolution}} - {{currentDataset.fullname_geospatial}} <span
-                            v-if="currentDataset.display_name_scenario != 'None'">- {{currentDataset.display_name_scenario}}</span>
-                        - {{currentDataset.display_name_parametre}}
-                        <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
-                    </li>
-                    -->
-                    <li>Catégorie - Global inventory - 1x1 - CH4
-                        <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
-                    </li>
-                    <li>Catégorie - Global inventory - 1x1 - NH4
-                        <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
-                    </li>
-                    <li>Catégorie - Global inventory - 1x1 - NoX
-                        <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
-                    </li>
-                    <li>Catégorie - Global inventory - 1x1 - CH4
-                        <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
-                    </li>
-                </ul>
+            <section class="aeris-eccad-datasearch-buttonSelect">
+                <button type="submit" name="select"
+                        v-on:click="addToData()"><i class="far fa-check-square"></i> {{$t('select')}}</button>
+                <button type="submit" name="add"
+                        v-on:click="reset()"><i class="far fa-plus-square"></i> {{$t('add')}}</button>
+                <button type="submit" name="reset"
+                        v-on:click="reset()"><i class="fas fa-sync-alt"></i> {{$t('reset')}}</button>
             </section>
         </div>
+        <section class="aeris-eccad-datasearch-selectedDatasets">
+            <h2>Inventaire(s) sélectionné(s) <!--{{$t('selecteddatasets')}}--> <span class="badge">8</span></h2>
+            <ul>
+                <!--
+                <li :class="datasetClass(currentDataset)"
+                    v-for="currentDataset in dataAdded"
+                    v-on:click="datasetSelected(currentDataset)">
+                    {{currentDataset.fullname_category}} - {{currentDataset.title_inventory}} -
+                    {{currentDataset.fullname_resolution}} - {{currentDataset.fullname_geospatial}} <span
+                        v-if="currentDataset.display_name_scenario != 'None'">- {{currentDataset.display_name_scenario}}</span>
+                    - {{currentDataset.display_name_parametre}}
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                -->
+                <li>Catégorie - Global inventory - 1x1 - CH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NoX
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - CH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NO2
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NO2
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NO2
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+            </ul>
+        </section>
+        <section class="aeris-eccad-datasearch-buttonvalid">
+            <button type="submit" name="accesdata"
+            v-on:click="gotoData()"><i class="far fa-chart-bar"></i> {{$t('accessdata')}}</button>
+        </section>
         
         
     </section>
     <section data-area="area3">
-        <div></div>
         <section>
             <h2>Groupe de paramètres <span class="badge">8</span></h2>
             <ul>
@@ -117,7 +132,6 @@
         </section>
     </section>
     <section data-area="area4">
-        <div></div>
         <section>
             <h2>Groupe de secteurs <span class="badge">3</span></h2>
             <ul>
@@ -140,7 +154,6 @@
         </section>
     </section>
     <section data-area="area5">
-        <div></div>
         <section>
             <h2>Géospatial <span class="badge">6</span></h2>
             <ul>
@@ -166,7 +179,7 @@
         </section>
     </section>
     <section data-area="area6">
-            <div></div>
+
             <section>
                 <h2>Inventaires <span class="badge">10</span></h2>
                 <ul>

@@ -33,43 +33,24 @@ li:last-child {
 
 /* GRID LAYOUT */
 .aeris-eccad-datasearch {
-    display: grid;
+    /* display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 20% 20% 20%;
+    grid-template-rows: 200px 200px 200px;
     grid-template-areas:    "area1 area2"
                             "area3 area4"
-                            "area5 area6";
+                            "area5 area6"; */
+    display: flex;
+    flex-flow: row wrap;
     padding: 20px;
+    font-size: 12px;
 }
-
-[data-area="area1"] {
-    grid-area: area1;
-}
-[data-area="area2"] {
-    grid-area: area2;
-}
-[data-area="area3"] {
-    grid-area: area3;
-}
-[data-area="area4"] {
-    grid-area: area4;
-}
-[data-area="area5"] {
-    grid-area: area5;
-}
-[data-area="area6"] {
-    grid-area: area6;
-}
-
-/* flexbox layout inside Grid Area */
-[data-area="area1"] > section{
-    flex: 0 1 200px;
-}
-
 
 [data-area^="area"] {
+    flex: 1 1 500px;
     display: flex;
-    padding:20px;
+    flex-flow: row wrap;
+    margin-right:20px;
+    margin-bottom: 20px;
 }
 
 /* COLORS  A NE PAS REPRENDRE
@@ -88,49 +69,124 @@ li:last-child {
 #000 => Noir
 */
 
-[data-area^="area"]:not(:nth-child(2))>div {
-    width: 30px;
-    background: #CCC;
+[data-area="area2"] {
+    order: 6;
+    border-left: 10px solid #CCC;
 }
-[data-area^="area"]:first-child>div {
-    background: #1F7E9E;
+
+[data-area="area1"] {
+    border-left: 10px solid #1F7E9E;
 }
-[data-area^="area"]:nth-child(3)>div {
-    background: #08A5E0;
+[data-area="area3"] {
+    border-left: 10px solid #08A5E0;
 }
-[data-area^="area"]:nth-child(4)>div {
-    background: #DD9946;
+[data-area="area4"] {
+    border-left: 10px solid #DD9946;
 }
-[data-area^="area"]:nth-child(5)>div {
-    background: #7DBF3B;
+[data-area="area5"] {
+    border-left: 10px solid #7DBF3B;
 }
-[data-area^="area"]:nth-child(6)>div {
-    background: #B6CC49;
+[data-area="area6"] {
+    border-left: 10px solid #B6CC49;
 }
 
 [data-area^="area"] > section {
-    flex: 1 1 auto;
-    border:1px solid #CCC;
+    flex: 1 1 200px;
+    border-left:none;
+   
 }
 
-[data-area^="area"] > section > h2 {
+[data-area^="area"] > section ul {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+[data-area^="area"] h2 {
     padding:10px;
     border-bottom: 1px solid #CCC;
-    font-size: 1rem;
+    font-size: 12px;
     text-transform: uppercase;
     position: relative;
 }
 
+/* AREA 2 */ 
+
+.aeris-eccad-datasearch-temporalClass {
+    flex:0 1 300px;
+}
+
+[data-area="area2"] li {
+    padding-right: 25px;
+    position: relative;   
+}
+
 /* GEOGRAPHICS */
-.aeris-eccad-datasearch-bboxClass {
-    display: flex;
-}
 .aeris-eccad-datasearch-bboxClass > label {
-    display: block;
-
-
+    display: inline-block;
+}
+.aeris-eccad-datasearch-bboxClass > label span {
+    display: inline-block;
+    width: 10px;
+}
+.aeris-eccad-datasearch-bboxClass > label input {
+    display: inline-block;
+    margin-left: 5px;
+    width: 55px;
 }
 
+/* commons border */
+[data-area^="area"] > section,
+[data-area^="area"] > div {
+    border:1px solid #CCC;
+}
+
+
+/* Buttons */
+button {
+    display: block;
+    margin:10px 0 0 20px;
+    padding: 5px 10px;
+    background:#999;
+    color:#FFF;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.4);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background:#444;
+}
+
+[name="select"] {
+    background:#08A5E0;
+}
+[name="add"] {
+    background:#1F7E9E;
+}
+
+[name="reset"] {
+    background:#DD9946;
+}
+[name="accesdata"] {
+    background:#7DBF3B;
+}
+
+.aeris-eccad-datasearch-buttonSelect button:last-child {
+    margin-bottom:10px;
+}
+
+.aeris-eccad-datasearch-selectedDatasets button{
+    margin:0;
+    padding: 0 5px;
+    position: absolute;
+    top:0;
+    right: 0;
+}
+.aeris-eccad-datasearch-buttonvalid button {
+    margin: 10px auto;
+}
 
 /* SPECIALS */
 .badge {
