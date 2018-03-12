@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -14,21 +15,22 @@
     <section data-area="area1">
         <div></div>
         <section>
-            <h2>Emissions<span class="badge"></span></h2>
+            <h2>Emissions <span class="badge">5</span></h2>
             <ul>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
+                <!-- checkbox ?-->
+                <li>biogénique</li>
+                <li>anthropique</li>
+                <li>volcans</li>
+                <li>feux de biomasse</li>
                 <li>item1</li>
             </ul>
         </section>
         <section>
-            <h2>Données auxiliaires<span class="badge"></span></h2>
+            <h2>Données auxiliaires <span class="badge">9</span></h2>
             <ul>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
+                <li>géographie</li>
+                <li>végétation </li>
+                <li>éclairs </li>
                 <li>item1</li>
                 <li>item1</li>
             </ul>
@@ -37,121 +39,136 @@
     <section data-area="area2">
         <div>
             <section>
-                <h2>Slider {{$t('temporal')}}</h2>
+                <h2>Temporal</h2>
                 <!--
                 <h2>Slider {{$t('temporal')}}</h2>
-                -->
-                <hr>
+               
                 <vue-slider ref="slider4" v-bind="dates" v-model="dates.value"
                                         @callback="temporalChanged"></vue-slider>
+                -->
+                <div>O-----------------------------O</div>
+                
             </section>
+            <section>
+                <h2>Coordonnées géographiques</h2>
+                <div class="aeris-eccad-datasearch-bboxClass">
+                    <label for="north">N<input type="number" id="north"></label>
+                    <label for="west">W<input type="number" id="west"></label>
+                    <label for="south">S<input type="number" id="south"></label>
+                    <label for="east">E<input type="number" id="east"></label>
+                </div>
+            </section>
+            
         </div>
         <div>
-
+            <section>
+                <h2>Inventaires sélectionnés {{$t('selecteddatasets')}}</h2>
+                <ul>
+                    <!--
+                    <li :class="datasetClass(currentDataset)"
+                        v-for="currentDataset in dataAdded"
+                        v-on:click="datasetSelected(currentDataset)">
+                        {{currentDataset.fullname_category}} - {{currentDataset.title_inventory}} -
+                        {{currentDataset.fullname_resolution}} - {{currentDataset.fullname_geospatial}} <span
+                            v-if="currentDataset.display_name_scenario != 'None'">- {{currentDataset.display_name_scenario}}</span>
+                        - {{currentDataset.display_name_parametre}}
+                        <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                    </li>
+                    -->
+                    <li>Catégorie - Global inventory - 1x1 - CH4
+                        <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                    </li>
+                    <li>Catégorie - Global inventory - 1x1 - NH4
+                        <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                    </li>
+                    <li>Catégorie - Global inventory - 1x1 - NoX
+                        <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                    </li>
+                    <li>Catégorie - Global inventory - 1x1 - CH4
+                        <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                    </li>
+                </ul>
+            </section>
         </div>
         
-        <section>
-            <h2>Inventaires sélectionnés {{$t('selecteddatasets')}}</h2>
-            <ul>
-                <!--
-                <li :class="datasetClass(currentDataset)"
-                    v-for="currentDataset in dataAdded"
-                    v-on:click="datasetSelected(currentDataset)">
-                    {{currentDataset.fullname_category}} - {{currentDataset.title_inventory}} -
-                    {{currentDataset.fullname_resolution}} - {{currentDataset.fullname_geospatial}} <span
-                        v-if="currentDataset.display_name_scenario != 'None'">- {{currentDataset.display_name_scenario}}</span>
-                    - {{currentDataset.display_name_parametre}}
-                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
-                </li>
-                -->
-                <li>Catégorie - Global inventory - 1x1 - CH4
-                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
-                </li>
-                <li>Catégorie - Global inventory - 1x1 - NH4
-                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
-                </li>
-                <li>Catégorie - Global inventory - 1x1 - NoX
-                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
-                </li>
-                <li>Catégorie - Global inventory - 1x1 - CH4
-                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
-                </li>
-            </ul>
-        </section>
+        
     </section>
     <section data-area="area3">
         <div></div>
         <section>
-            <h2>title1<span class="badge"></span></h2>
+            <h2>Groupe de paramètres <span class="badge">8</span></h2>
             <ul>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
+                <li>Composés Organiques Volatiles</li>
+                <li>Gaz à effet de serre</li>
+                <li>Metals lourds</li>
+                <li>Particules</li>
+                <li>Particules</li>
             </ul>
         </section>
         <section>
-            <h2>title2<span class="badge"></span></h2>
+            <h2>Paramètres <span class="badge">6</span></h2>
             <ul>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
+                <li>CO2</li>
+                <li>CH4</li>
+                <li>NOx</li>
+                <li>CFC</li>
+                <li>N2O</li>
             </ul>
         </section>
     </section>
     <section data-area="area4">
         <div></div>
         <section>
-            <h2>title1<span class="badge"></span></h2>
+            <h2>Groupe de secteurs <span class="badge">3</span></h2>
             <ul>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
+                <li>Processus industriels</li>
+                <li>Changement d'occupation du sol</li>
+                <li>Déchets</li>
+                <li>Agriculture</li>
+                <li>1 - Energy : Fuel Combustion (1A) and Fugitive emisssion from fuel (1B)</li>
             </ul>
         </section>
         <section>
-            <h2>title2<span class="badge"></span></h2>
+            <h2>Secteurs <span class="badge">9</span></h2>
             <ul>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
+                <li>Incinération des déchets agricoles</li>
+                <li>Agriculture</li>
+                <li>Artisanat et exploitation d'or à petite échelle</li>
+                <li>Aviation décollage et attérissage</li>
+                <li>Industrie chlore-alkaline, technologie des cellules à mercure</li>
             </ul>
         </section>
     </section>
     <section data-area="area5">
         <div></div>
         <section>
-            <h2>title1<span class="badge"></span></h2>
+            <h2>Géospatial <span class="badge">6</span></h2>
             <ul>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
+                <li>Global</li>
+                <li>Global - Pôle</li>
+                <li>Afrique</li>
+                <li>Afrique du sud</li>
+                <li>Moyen Orient</li>
+                <li>East Asia</li>
+                <li>Europe</li>
+                <li>test</li>
             </ul>
         </section>
         <section>
-            <h2>title2<span class="badge"></span></h2>
+            <h2>Résolutions <span class="badge">4</span></h2>
             <ul>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
-                <li>item1</li>
+                <li>0.0083x0.0083</li>
+                <li>0.0083x0.0083</li>
+                <li>0.1x0.1</li>
+                <li>0.25x0.25</li>
+                <li>1x1</li>
             </ul>
         </section>
     </section>
     <section data-area="area6">
             <div></div>
             <section>
-                <h2>title1<span class="badge"></span></h2>
+                <h2>Inventaires <span class="badge">10</span></h2>
                 <ul>
                     <li>item1</li>
                     <li>item1</li>
@@ -161,7 +178,7 @@
                 </ul>
             </section>
             <section>
-                <h2>title2<span class="badge"></span></h2>
+                <h2>Scénarios <span class="badge">12</span></h2>
                 <ul>
                     <li>item1</li>
                     <li>item1</li>
@@ -180,58 +197,6 @@
 
 <style>
 
-/* GRID LAYOUT */
-.aeris-eccad-datasearch {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 20% 20% 20%;
-    grid-template-areas:    "area1 area2"
-                            "area3 area4"
-                            "area5 area6";
-    padding: 20px;
-}
-
-[data-area="area1"] {
-    grid-area: area1;
-}
-[data-area="area2"] {
-    grid-area: area2;
-}
-[data-area="area3"] {
-    grid-area: area3;
-}
-[data-area="area4"] {
-    grid-area: area4;
-}
-[data-area="area5"] {
-    grid-area: area5;
-}
-[data-area="area6"] {
-    grid-area: area6;
-}
-
-/* flexbox layout inside Grid Area */
-[data-area^="area"] {
-    display: flex;
-    padding:20px;
-}
-
-[data-area^="area"]>div {
-    width: 30px;
-    background: #CCC;
-}
-
-[data-area^="area"] > section {
-    flex: 1 1 auto;
-    border:1px solid #CCC;
-}
-
-[data-area^="area"] > section > h2 {
-    padding:0 10px 10px;
-    border-bottom: 1px solid #CCC;
-    font-size: 1rem;
-    text-transform: uppercase;
-}
 
 </style>
 

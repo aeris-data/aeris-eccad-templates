@@ -1,22 +1,32 @@
-
-
 <template>
     <div class="container aeris-eccad-datasearch">
         <div>
 
             <div class="aeris-eccad-datasearch-overviewFlex">
-                <div>
-                    <span class="aeris-eccad-datasearch-overviewTitle">{{$t('categories')}}</span>
-                    <span class="aeris-eccad-datasearch-eccadBadge" v-if="selectedData.length >= 1">{{selectedCategorySize}}</span>
-                    <ul class="aeris-eccad-datasearch-overviewListW">
-                        <li :class="datatypeClass(datatype)"
-                            v-for="(datatype, index) in uniqueCategories()"
+
+                <div class="aeris-eccad-datasearch-emissionDatatypeClass">
+                    <span class="aeris-eccad-datasearch-overviewTitle">{{$t('emissions')}}</span>
+                    <span class="aeris-eccad-datasearch-eccadBadge" v-if="selectedData.length >= 1">{{selectedEmissionCategorySize}}</span>
+                    <ul class="aeris-eccad-datasearch-overviewListM">
+                        <li :class="emissionDatatypeClass(datatype)"
+                            v-for="(datatype, index) in uniqueEmissionCategories()"
                             v-on:click="datatypeChanged(datatype)">{{datatype.fullname_category}}
                         </li>
                     </ul>
                 </div>
 
-                <div>
+                <div class="aeris-eccad-datasearch-ancillaryDatatypeClass">
+                    <span class="aeris-eccad-datasearch-overviewTitle">{{$t('dataancillary')}}</span>
+                    <span class="aeris-eccad-datasearch-eccadBadge" v-if="selectedData.length >= 1">{{selectedAncillaryCategorySize}}</span>
+                    <ul class="aeris-eccad-datasearch-overviewListM">
+                        <li :class="ancillaryDatatypeClass(datatype)"
+                            v-for="(datatype, index) in uniqueAncillaryCategories()"
+                            v-on:click="datatypeChanged(datatype)">{{datatype.fullname_category}}
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="aeris-eccad-datasearch-speciesClass">
                     <span class="aeris-eccad-datasearch-overviewTitle">{{$t('parameters')}}</span>
                     <span class="aeris-eccad-datasearch-eccadBadge"
                           v-if="selectedData.length >= 1">{{selectedParameterSize}}</span>
@@ -29,7 +39,7 @@
                     </ul>
                 </div>
 
-                <div>
+                <div class="aeris-eccad-datasearch-datasetGroupClass">
                     <span class="aeris-eccad-datasearch-overviewTitle">{{$t('datasets')}}</span>
                     <span class="aeris-eccad-datasearch-eccadBadge"
                           v-if="selectedData.length >= 1">{{selectedGroupOfDatasetSize}}</span>
@@ -37,13 +47,14 @@
                         <li :class="datasetGroupClass(inventoryGroup)"
                             v-for="(inventoryGroup, index) in uniqueDatasetGroup()"
 
-                            v-on:click="inventoryGroupChanged(inventoryGroup)">{{$t(inventoryGroup.title_inventory_group)}}
+                            v-on:click="inventoryGroupChanged(inventoryGroup)">
+                            {{$t(inventoryGroup.title_inventory_group)}}
                         </li>
                     </ul>
 
                 </div>
 
-                <div>
+                <div class="aeris-eccad-datasearch-resolutionClass">
 
                     <span class="aeris-eccad-datasearch-overviewTitle">{{$t('resolutions')}}</span>
                     <span class="aeris-eccad-datasearch-eccadBadge" v-if="selectedData.length >= 1">{{selectedResolutionSize}}</span>
@@ -56,7 +67,7 @@
                     </ul>
                 </div>
 
-                <div>
+                <div class="aeris-eccad-datasearch-sectorGroupClass">
                     <span class="aeris-eccad-datasearch-overviewTitle">{{$t('groupofsectors')}}</span>
                     <span v-if="selectedAllSectorInventoryGroup.length === 1 && selectedAllSectorInventoryGroup.length !==0 && selectedAllSectorInventoryGroup[0].id_sector === -1"
                           class="aeris-eccad-datasearch-eccadBadge">{{0}}</span>
@@ -70,7 +81,7 @@
 
                 </div>
 
-                <div>
+                <div class="aeris-eccad-datasearch-speciesGroupClass">
                     <span class="aeris-eccad-datasearch-overviewTitle">{{$t('groupofparameters')}}</span>
                     <span v-if="selectedGroupOfSpecieSize === 1 && selectedData.length !==0 && selectedData[0].fullname_parametre_group === 'None'"
                           class="aeris-eccad-datasearch-eccadBadge">{{0}}</span>
@@ -84,7 +95,7 @@
                     </ul>
                 </div>
 
-                <div>
+                <div class="aeris-eccad-datasearch-scenarioClass">
                     <span class="aeris-eccad-datasearch-overviewTitle">{{$t('scenarios')}}</span>
                     <span v-if="selectedScenarioSize === 1 && selectedData.length !==0 && selectedData[0].id_scenario === -1"
                           class="aeris-eccad-datasearch-eccadBadge">{{0}}</span>
@@ -99,7 +110,7 @@
 
                 </div>
 
-                <div>
+                <div class="aeris-eccad-datasearch-geospatialClass">
                     <span class="aeris-eccad-datasearch-overviewTitle">{{$t('geospatial')}}</span>
                     <span class="aeris-eccad-datasearch-eccadBadge" v-if="selectedData.length >= 1">{{selectedGeospatialSize}}</span>
                     <ul class="aeris-eccad-datasearch-overviewListM">
@@ -134,7 +145,7 @@
                         <vue-slider ref="slider4" v-bind="dates" v-model="dates.value"
                                     @callback="temporalChanged"></vue-slider>
                     </div>
-                    <div>
+                    <div class="aeris-eccad-datasearch-datasetClass">
                         <span class="aeris-eccad-datasearch-overviewTitle">{{$t('selecteddatasets')}}</span>
                         <ul class="aeris-eccad-datasearch-overviewSelectedDatasets">
                             <li :class="datasetClass(currentDataset)"
@@ -144,7 +155,8 @@
                                 {{currentDataset.fullname_resolution}} - {{currentDataset.fullname_geospatial}} <span
                                     v-if="currentDataset.display_name_scenario != 'None'">- {{currentDataset.display_name_scenario}}</span>
                                 - {{currentDataset.display_name_parametre}}
-                                <span v-on:click="removeToData(currentDataset)" class="aeris-eccad-datasearch-removeSpan">x</span>
+                                <span v-on:click="removeToData(currentDataset)"
+                                      class="aeris-eccad-datasearch-removeSpan">x</span>
                             </li>
 
                         </ul>
@@ -152,19 +164,25 @@
                 </div>
 
                 <div class="aeris-eccad-datasearch-bboxClass">
-                    <div>
+                    <div class="aeris-eccad-datasearch-boundingbox">
                         <span class="aeris-eccad-datasearch-overviewTitle">{{$t('boundingbox')}}</span>
                         <bbox @lonMaxR="updateLonMax" @lonMinR="updateLonMin" @latMaxR="updateLatMax"
                               @latMinR="updateLatMin"></bbox>
                     </div>
-                    <div>
-                        <div type="button" class="btn btn-default aeris-eccad-datasearch-resetButton" v-on:click="addToData()">{{$t('add')}}<span
+                    <div class="aeris-eccad-datasearch-select-add-reset-buttons">
+                        <div type="button" class="btn btn-default aeris-eccad-datasearch-resetButton" name="select"
+                             v-on:click="addToData()">{{$t('select')}}<span
                         ></span></div>
-                        <div type="button" class="btn btn-default aeris-eccad-datasearch-resetButton" v-on:click="reset()">{{$t('reset')}}<span
+                        <div type="button" class="btn btn-default aeris-eccad-datasearch-resetButton" name="add"
+                             v-on:click="reset()">{{$t('add')}}<span
+                        ></span></div>
+                        <div type="button" class="btn btn-default aeris-eccad-datasearch-resetButton" name="reset"
+                             v-on:click="reset()">{{$t('reset')}}<span
                         ></span></div>
                     </div>
 
-                    <div type="button" class="btn btn-default aeris-eccad-datasearch-gotoDataButton" v-on:click="gotoData()">{{$t('gotodata')}}<span
+                    <div type="button" class="btn btn-default aeris-eccad-datasearch-gotoDataButton" name="accesdata"
+                         v-on:click="gotoData()">{{$t('accessdata')}}<span
                     ></span></div>
                 </div>
             </div>
