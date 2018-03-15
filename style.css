@@ -1,16 +1,32 @@
+/* COLORS  A NE PAS REPRENDRE
+#90BCD1 => Bleu clair (Atmosphere)
+#08A5E0 => Bleu clair 2 (Pic du Midi)
+#1F7E9E => Bleu océan (Hydrosphère)
+#4765a0 => Bleu (Aeris)
+#2D4F59 => Bleu foncé (Astronomie)
+#B6CC49 => Vert clair (Biosphère)
+#7DBF3B => Vert foncé Environnement
+#DD9946 => Orange (Géosciences)
+#E25B3D => Rouge (Planétologie)
+#CCC => Gris clair
+#AAA => Gris
+#777 => Gris foncé
+#000 => Noir
+*/
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/** A NE PAS INTEGRER */
 html {
     font-size: 16px;
 }
 body {
     font-family: arial;
     color: #333;
+}
+/*------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 ul {
@@ -29,16 +45,8 @@ li:last-child {
     padding-bottom:0;
 }
 
-/********************************************************/
-
-/* GRID LAYOUT */
+/* FLEXBOX LAYOUT */
 .aeris-eccad-datasearch {
-    /* display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 200px 200px 200px;
-    grid-template-areas:    "area1 area2"
-                            "area3 area4"
-                            "area5 area6"; */
     display: flex;
     flex-flow: row wrap;
     padding: 20px;
@@ -53,27 +61,10 @@ li:last-child {
     margin-bottom: 20px;
 }
 
-/* COLORS  A NE PAS REPRENDRE
-#90BCD1 => Bleu clair (Atmosphere)
-#08A5E0 => Bleu clair 2 (Pic du Midi)
-#1F7E9E => Bleu océan (Hydrosphère)
-#4765a0 => Bleu (Aeris)
-#2D4F59 => Bleu foncé (Astronomie)
-#B6CC49 => Vert clair (Biosphère)
-#7DBF3B => Vert foncé Environnement
-#DD9946 => Orange (Géosciences)
-#E25B3D => Rouge (Planétologie)
-#CCC => Gris clair
-#AAA => Gris
-#777 => Gris foncé
-#000 => Noir
-*/
-
 [data-area="area2"] {
     order: 6;
     border-left: 10px solid #CCC;
 }
-
 [data-area="area1"] {
     border-left: 10px solid #1F7E9E;
 }
@@ -110,7 +101,6 @@ li:last-child {
 }
 
 /* AREA 2 */ 
-
 .aeris-eccad-datasearch-temporalClass {
     flex:0 1 300px;
 }
@@ -139,7 +129,6 @@ li:last-child {
 [data-area^="area"] > div {
     border:1px solid #CCC;
 }
-
 
 /* Buttons */
 button {
