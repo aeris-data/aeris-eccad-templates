@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</head>
+<body>
+
+
+<!-- <template> -->
+<div class="aeris-eccad-datasearch">
+    <section data-area="area1">
+        <section>
+            <h2>Emissions <span class="badge">5</span></h2>
+            <ul>
+                <!-- checkbox ?-->
+                <li>biogénique</li>
+                <li>anthropique</li>
+                <li>volcans</li>
+                <li>feux de biomasse</li>
+                <li>item1</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Données auxiliaires <span class="badge">9</span></h2>
+            <ul>
+                <li>géographie</li>
+                <li>végétation </li>
+                <li>éclairs </li>
+                <li>item1</li>
+                <li>item1</li>
+            </ul>
+        </section>
+    </section>
+    <section data-area="area2">
+        <div>
+            <section class="aeris-eccad-datasearch-temporalClass">
+                <h2>Temporal</h2>
+                <!--
+                <h2>Slider {{$t('temporal')}}</h2>
+                
+                <vue-slider ref="slider4" v-bind="dates" v-model="dates.value"
+                                        @callback="temporalChanged"></vue-slider>
+                -->
+                <div>O-----------------------------O</div>
+                
+                
+            </section>
+            <section class="aeris-eccad-datasearch-bboxClass">
+                <h2>Coordonnées géographiques</h2>
+                <label for="north"><span>N</span><input type="number" id="north"></label>
+                <label for="west"><span>W</span><input type="number" id="west"></label>
+                <label for="south"><span>S</span><input type="number" id="south"></label>
+                <label for="east"><span>E</span><input type="number" id="east"></label>
+            </section>
+            <section class="aeris-eccad-datasearch-buttonSelect">
+                <button type="submit" name="select"
+                        v-on:click="addToData()"><i class="far fa-check-square"></i> {{$t('select')}}</button>
+                <button type="submit" name="add"
+                        v-on:click="reset()"><i class="far fa-plus-square"></i> {{$t('add')}}</button>
+                <button type="submit" name="reset"
+                        v-on:click="reset()"><i class="fas fa-sync-alt"></i> {{$t('reset')}}</button>
+            </section>
+        </div>
+        <section class="aeris-eccad-datasearch-selectedDatasets">
+            <h2>Inventaire(s) sélectionné(s) <!--{{$t('selecteddatasets')}}--> <span class="badge">8</span></h2>
+            <ul>
+                <!--
+                <li :class="datasetClass(currentDataset)"
+                    v-for="currentDataset in dataAdded"
+                    v-on:click="datasetSelected(currentDataset)">
+                    {{currentDataset.fullname_category}} - {{currentDataset.title_inventory}} -
+                    {{currentDataset.fullname_resolution}} - {{currentDataset.fullname_geospatial}} <span
+                        v-if="currentDataset.display_name_scenario != 'None'">- {{currentDataset.display_name_scenario}}</span>
+                    - {{currentDataset.display_name_parametre}}
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                -->
+                <li>Catégorie - Global inventory - 1x1 - CH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NoX
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - CH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NO2
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NO2
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NO2
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+            </ul>
+        </section>
+        <section class="aeris-eccad-datasearch-buttonvalid">
+            <button type="submit" name="accesdata"
+            v-on:click="gotoData()"><i class="far fa-chart-bar"></i> {{$t('accessdata')}}</button>
+        </section>
+        
+        
+    </section>
+    <section data-area="area3">
+        <section>
+            <h2>Groupe de paramètres <span class="badge">8</span></h2>
+            <ul>
+                <li>Composés Organiques Volatiles</li>
+                <li>Gaz à effet de serre</li>
+                <li>Metals lourds</li>
+                <li>Particules</li>
+                <li>Particules</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Paramètres <span class="badge">6</span></h2>
+            <ul>
+                <li>CO2</li>
+                <li>CH4</li>
+                <li>NOx</li>
+                <li>CFC</li>
+                <li>N2O</li>
+            </ul>
+        </section>
+    </section>
+    <section data-area="area4">
+        <section>
+            <h2>Groupe de secteurs <span class="badge">3</span></h2>
+            <ul>
+                <li>Processus industriels</li>
+                <li>Changement d'occupation du sol</li>
+                <li>Déchets</li>
+                <li>Agriculture</li>
+                <li>1 - Energy : Fuel Combustion (1A) and Fugitive emisssion from fuel (1B)</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Secteurs <span class="badge">9</span></h2>
+            <ul>
+                <li>Incinération des déchets agricoles</li>
+                <li>Agriculture</li>
+                <li>Artisanat et exploitation d'or à petite échelle</li>
+                <li>Aviation décollage et attérissage</li>
+                <li>Industrie chlore-alkaline, technologie des cellules à mercure</li>
+            </ul>
+        </section>
+    </section>
+    <section data-area="area5">
+        <section>
+            <h2>Géospatial <span class="badge">6</span></h2>
+            <ul>
+                <li>Global</li>
+                <li>Global - Pôle</li>
+                <li>Afrique</li>
+                <li>Afrique du sud</li>
+                <li>Moyen Orient</li>
+                <li>East Asia</li>
+                <li>Europe</li>
+                <li>test</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Résolutions <span class="badge">4</span></h2>
+            <ul>
+                <li>0.0083x0.0083</li>
+                <li>0.0083x0.0083</li>
+                <li>0.1x0.1</li>
+                <li>0.25x0.25</li>
+                <li>1x1</li>
+            </ul>
+        </section>
+    </section>
+    <section data-area="area6">
+
+            <section>
+                <h2>Inventaires <span class="badge">10</span></h2>
+                <ul>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Scénarios <span class="badge">12</span></h2>
+                <ul>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                    <li>item1</li>
+                </ul>
+            </section>
+        </section>
+
+</div>
+<!-- </template> -->
+<!-- 
+<script></script>
+-->
+
+<style>
+
+
+</style>
+
+
+</body>
+</html>
