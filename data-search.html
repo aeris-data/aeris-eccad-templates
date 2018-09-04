@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ECCAD DATA SEARCH V2</title>
+    <link rel="stylesheet" href="styleV2.css">
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="aeris-eccad-datasearch">
+    <section data-area="panier"><!-- AREA PANIER -->
+        <section class="aeris-eccad-datasearch-selectedDatasets"> <!-- Panier -->
+            <h2>Inventaire(s) sélectionné(s)<span class="badge">8</span></h2>
+            <ul>
+                <li>Catégorie - Global inventory - 1x1 - CH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - NoX
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - CH4
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NO2
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NO2
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+                <li>Catégorie - Global inventory - 1x1 - NO2
+                    <button v-on:click="removeToData(currentDataset)" class="btn-close">x</button>
+                </li>
+            </ul>
+        </section>
+        <section class="aeris-eccad-datasearch-buttonSelect">
+                <button type="submit" name="empty"><i class="fas fa-trash-alt"></i> Empty</button>
+        </section>
+    </section>
+    <section data-area="select"><!-- AREA SELECT -->
+        <h2>Votre sélection</h2>
+        <div>
+            <section class="aeris-eccad-datasearch-navHistory">
+                <ul class="arrow_box">
+                    <li data-color=""><span><i class="fas fa-sync-alt "></i> Réinitialiser</span><span>Cliquez ici pour réinitialiser vos critères de sélection</span></li>
+                    <li data-color="gpparam"><span>Composés Organiques Volatiles</span><span>Groupe de paramètres </span></li>
+                    <li data-color="gpsecteurs"><span>Energy : Fuel Combustion (1A) and Fugitive emisssion from fuel (1B)</span><span>Groupe de secteurs</span></li>
+                    <li data-color="geospatial"><span>Afrique</span><span>Critère 3</span></li>
+                    <li data-color="resolutions"><span>Industrie chlore-alkaline, technologie des cellules à mercure</span><span>Critère 4, Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod totam dignissimos nihil.</span></li>
+                    <li data-color="gpparam"><span>Composés Organiques Volatiles</span><span>Groupe de paramètres </span></li>
+                    <li data-color="gpsecteurs"><span>Energy : Fuel Combustion (1A) and Fugitive emisssion from fuel (1B)</span><span>Groupe de secteurs</span></li>
+                </ul>
+            </section>
+            <section class="aeris-eccad-datasearch-temporal-bbox">
+                <div>
+                    <h3>Intervalle temporel</h3>
+                    <section class="aeris-eccad-datasearch-temporal"><p>O-----------------------------O</p></section>
+                </div>
+                <div>
+                    <h3>Coordonnées géographiques</h3>
+                    <section class="aeris-eccad-datasearch-bbox">BBOX</section>
+                </div>
+            </section>
+        </div>
+        <section class="aeris-eccad-datasearch-buttonSelect">
+            <button type="submit" name="add"><i class="fas fa-cart-arrow-down "></i> Ajouter l'inventaire au panier</button>
+        </section>
+    </section>
+    <section data-area="datasets"><!-- AREA DATASETS LIST -->
+        <section data-area="area1"> <!-- AREA 1 Emissions categories -->
+            <section>
+                <h2>Emissions <span class="badge">5</span></h2>
+                <ul>
+                    <li>biogénique</li>
+                    <li>anthropique</li>
+                    <li>volcans</li>
+                    <li>feux de biomasse</li>
+                    <li>item1</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Données auxiliaires <span class="badge">9</span></h2>
+                <ul>
+                    <li>géographie</li>
+                    <li>végétation </li>
+                    <li>éclairs </li>
+                    <li>item1</li>
+                    <li>item1</li>
+                </ul>
+            </section>
+        </section> 
+
+        <section data-area="area2"> <!-- groupe Parametre -->
+            <section>   <!-- groupe Parametres  -->
+                <h2>Groupe de paramètres <span class="badge">8</span></h2>
+                <ul>
+                    <li>Composés Organiques Volatiles</li>
+                    <li>Gaz à effet de serre</li>
+                    <li>Metals lourds</li>
+                    <li>Particules</li>
+                    <li>Particules</li>
+                </ul>
+            </section>
+        </section>
+        <section data-area="area3">  <!-- parametres -->
+            <section>
+                <h2>Paramètres <span class="badge">6</span></h2>
+                <ul>
+                    <li>CO2</li>
+                    <li>CH4</li>
+                    <li>NOx</li>
+                    <li>CFC</li>
+                    <li>N2O</li>
+                </ul>
+            </section>
+        </section>
+
+        <section data-area="area4"><!-- Géospatial / Résolutions -->
+            <section>
+                <h2>Géospatial <span class="badge">6</span></h2>
+                <ul>
+                    <li>Global</li>
+                    <li>Global - Pôle</li>
+                    <li>Afrique</li>
+                    <li>Afrique du sud</li>
+                    <li>Moyen Orient</li>
+                    <li>East Asia</li>
+                    <li>Europe</li>
+                    <li>test</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Résolutions <span class="badge">4</span></h2>
+                <ul>
+                    <li>0.0083x0.0083</li>
+                    <li>0.0083x0.0083</li>
+                    <li>0.1x0.1</li>
+                    <li>0.25x0.25</li>
+                    <li>1x1</li>
+                </ul>
+            </section>
+        </section>
+
+        <section data-area="area5"><!-- groupe Secteurs -->
+            <section>
+                <h2>Groupe de secteurs <span class="badge">3</span></h2>
+                <ul>
+                    <li>Processus industriels</li>
+                    <li>Changement d'occupation du sol</li>
+                    <li>Déchets</li>
+                    <li>Agriculture</li>
+                    <li>1 - Energy : Fuel Combustion (1A) and Fugitive emisssion from fuel (1B)</li>
+                </ul>
+            </section>
+        </section>
+
+        <section data-area="area6"><!-- Secteurs -->
+            <section>
+                <h2>Secteurs <span class="badge">9</span></h2>
+                <ul>
+                    <li>Incinération des déchets agricoles</li>
+                    <li>Agriculture</li>
+                    <li>Artisanat et exploitation d'or à petite échelle</li>
+                    <li>Aviation décollage et attérissage</li>
+                    <li>Industrie chlore-alkaline, technologie des cellules à mercure</li>
+                </ul>
+            </section>
+        </section>
+    </section>
+
+    
+
+</div>
+
+</body>
+</html>
