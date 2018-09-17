@@ -162,7 +162,7 @@ button:hover {
     background:#7DBF3B;
 }
 
-.aeris-eccad-datasearch-buttonSelect button:last-child {
+.aeris-eccad-datasearch-buttonSelect button {
     margin-bottom:10px;
 }
 

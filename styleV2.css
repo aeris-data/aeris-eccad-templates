@@ -112,6 +112,10 @@ body {
     width: 100%;
 }
 
+.aeris-eccad-datasearch [data-area="select"] section.aeris-eccad-datasearch-buttonSelect {
+    width: 100%;
+}
+
 .aeris-eccad-datasearch [data-area="select"] > div {
     max-width: 80%;
 }
@@ -238,13 +242,23 @@ FLECHES
 */
 
 .aeris-eccad-datasearch [data-area^="area"] {
-    flex: 1 1 500px;
+    flex: 1 1 300px;
     display: flex;
     flex-flow: row wrap;
     margin-right:20px;
     margin-bottom: 20px;
 }
 
+@media (min-width:1500px) {
+    .aeris-eccad-datasearch [data-area^="area"] {
+        flex: 1 1 390px;
+    }
+}
+@media (min-width:1900px) {
+    .aeris-eccad-datasearch [data-area^="area"] {
+        flex: 1 1 500px;
+    }
+}
 
 .aeris-eccad-datasearch [data-area="area1"] {
     border-left: 10px solid #1F7E9E;
@@ -267,7 +281,7 @@ FLECHES
 }
 
 .aeris-eccad-datasearch [data-area^="area"] > section {
-    flex: 1 1 200px;
+    flex: 1 1 150px;
     border-left:none;
 }
 
@@ -374,7 +388,7 @@ FLECHES
     margin-bottom:10px;
 }
 
-.aeris-eccad-datasearch .aeris-eccad-datasearch-selectedDatasets button{
+.aeris-eccad-datasearch .aeris-eccad-datasearch-selectedDatasets button.btn-close{
     margin:0;
     padding: 0 5px;
     position: absolute;

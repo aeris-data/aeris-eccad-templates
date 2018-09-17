@@ -14,6 +14,9 @@
 <div class="aeris-eccad-datasearch">
     <section data-area="panier"><!-- AREA PANIER -->
         <section class="aeris-eccad-datasearch-selectedDatasets"> <!-- Panier -->
+            <section class="aeris-eccad-datasearch-buttonSelect">
+                <button type="submit" name="empty"><i class="fas fa-trash-alt"></i> Empty</button>
+            </section>
             <h2>Inventaire(s) sélectionné(s)<span class="badge">8</span></h2>
             <ul>
                 <li>Catégorie - Global inventory - 1x1 - CH4
@@ -39,12 +42,11 @@
                 </li>
             </ul>
         </section>
-        <section class="aeris-eccad-datasearch-buttonSelect">
-                <button type="submit" name="empty"><i class="fas fa-trash-alt"></i> Empty</button>
-        </section>
     </section>
-    <section data-area="select"><!-- AREA SELECT -->
-        <h2>Votre sélection</h2>
+    <section data-area="select"><!-- AREA SELECT -->        
+        <section class="aeris-eccad-datasearch-buttonSelect">
+            <button type="submit" name="add"><i class="fas fa-cart-arrow-down "></i> Ajouter l'inventaire au panier</button>
+        </section>
         <div>
             <section class="aeris-eccad-datasearch-navHistory">
                 <ul class="arrow_box">
@@ -68,9 +70,6 @@
                 </div>
             </section>
         </div>
-        <section class="aeris-eccad-datasearch-buttonSelect">
-            <button type="submit" name="add"><i class="fas fa-cart-arrow-down "></i> Ajouter l'inventaire au panier</button>
-        </section>
     </section>
     <section data-area="datasets"><!-- AREA DATASETS LIST -->
         <section data-area="area1"> <!-- AREA 1 Emissions categories -->
